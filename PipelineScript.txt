@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  stages {
+    stage('Log Ant version info') {
+      steps {
+        sh 'ant -version'
+      }
+    }
+    stage('GitHub Jenkins Ant Build') {
+      steps {
+        git branch:'main', url:'https://github.com/shamayla20/javatest.git'
+        sh 'ant build makewar'
+      }
+    }
+    stage('Docker Build') {
+        steps{
+            sh 'docker version'
+            sh 'docker build . -t javatest:v1'
+            sh 'docker image list'
+        }
+    }
+    
+  }
+}
