@@ -1,4 +1,18 @@
 <project  name="HBDataCollection" basedir="." >	
+	
+	<path id="master-classpath"> <fileset dir="WebContent/WEB-INF/lib"> <include name="*.jar"/> </fileset> </path>
+	<path id="tomcat-classpath"> <fileset dir="tomcat-lib"> <include name="*.jar"/> </fileset> </path>
+	
+	<target name="build" description="Compile main source tree java files">
+	    <mkdir dir="WebContent/WEB-INF/classes"/>
+	    <javac destdir="WebContent/WEB-INF/classes" source="1.8" target="1.8" debug="true"
+	           deprecation="false" optimize="false" failonerror="true">
+	        <src path="src"/>
+	    	<classpath refid="tomcat-classpath"/>
+	    	 <classpath refid="master-classpath"/>
+	    </javac>
+	</target>
+	<target name="makewar" description="Compile main source tree java files">
 	<war destfile="javatest.war" webxml="WebContent/WEB-INF/web.xml">
 		<fileset dir = "WebContent">
 			<include name = "**/*.*"/>
@@ -7,4 +21,5 @@
 	  </lib>
 	  <classes dir="WebContent/WEB-INF/classes"/>
 	</war>
+	</target>
 </project>
