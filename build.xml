@@ -1,4 +1,4 @@
-<project  name="HBDataCollection" basedir="." >	
+<project  name="javatest" basedir="." >	
 	
 	<path id="master-classpath"> <fileset dir="WebContent/WEB-INF/lib"> <include name="*.jar"/> </fileset> </path>
 	<path id="tomcat-classpath"> <fileset dir="tomcat-lib"> <include name="*.jar"/> </fileset> </path>
